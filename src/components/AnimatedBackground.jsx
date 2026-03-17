@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import * as THREE from 'three';
+import NET from 'vanta/dist/vanta.net.min';
 
 export default function AnimatedBackground() {
   const vantaRef = useRef(null);
@@ -9,10 +11,11 @@ export default function AnimatedBackground() {
     let timeoutId = null;
 
     const initVanta = () => {
-      if (window.VANTA && window.VANTA.NET && vantaRef.current && !vantaEffect.current) {
+      if (vantaRef.current && !vantaEffect.current) {
         try {
-          vantaEffect.current = window.VANTA.NET({
+          vantaEffect.current = NET({
             el: vantaRef.current,
+            THREE: THREE,
             mouseControls: true,
             touchControls: true,
             gyroControls: false,
@@ -39,22 +42,20 @@ export default function AnimatedBackground() {
       initVanta();
     }, 1200);
 
-    window.addEventListener('vantaReady', initVanta);
-
     return () => {
       if (timeoutId) clearTimeout(timeoutId);
       if (vantaEffect.current) {
         vantaEffect.current.destroy();
         vantaEffect.current = null;
       }
-      window.removeEventListener('vantaReady', initVanta);
     };
   }, []);
 
   return (
     <div 
       ref={vantaRef} 
-      className={`fixed inset-0 -z-10 transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`} 
+      className={`fixed inset-0 -z-1 transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`} 
     />
   );
 }
+

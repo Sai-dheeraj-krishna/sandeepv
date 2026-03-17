@@ -34,12 +34,13 @@
   }
 
   body {
-    background-color: var(--color-navy-950);
+    background-color: transparent;
     color: #f1f5f9;
     font-family: var(--font-sans);
     line-height: 1.7;
     overflow-x: hidden;
   }
+
 
   /* Custom scrollbar */
   ::-webkit-scrollbar {

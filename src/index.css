@@ -34,15 +34,23 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
+    background-color: #000000;
   }
 
   body {
-    background-color: transparent;
+    background-color: #000000;
     color: #f1f5f9;
     font-family: var(--font-sans);
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
   }
 
   /* Custom scrollbar */

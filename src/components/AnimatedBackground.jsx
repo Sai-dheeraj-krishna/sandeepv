@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import NET from 'vanta/dist/vanta.net.min';
+import 'vanta/dist/vanta.net.min';
 
 export default function AnimatedBackground() {
   const vantaRef = useRef(null);
@@ -9,11 +9,17 @@ export default function AnimatedBackground() {
 
   useEffect(() => {
     let timeoutId = null;
+    
+    // Vanta expects THREE on the window object
+    window.THREE = THREE;
 
     const initVanta = () => {
-      if (vantaRef.current && !vantaEffect.current) {
+      // Use the global VANTA object which is populated by the side-effect import
+      const vantaFunc = window.VANTA?.NET;
+      
+      if (typeof vantaFunc === 'function' && vantaRef.current && !vantaEffect.current) {
         try {
-          vantaEffect.current = NET({
+          vantaEffect.current = vantaFunc({
             el: vantaRef.current,
             THREE: THREE,
             mouseControls: true,
@@ -34,6 +40,8 @@ export default function AnimatedBackground() {
         } catch (err) {
           console.error('Vanta initialization failed:', err);
         }
+      } else {
+        console.warn('Vanta NET effect not yet available, will retry...');
       }
     };
 
@@ -58,4 +66,6 @@ export default function AnimatedBackground() {
     />
   );
 }
+
+
 

@@ -46,9 +46,10 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-navy-950/90 backdrop-blur-xl shadow-lg shadow-black/30 border-b border-white/5'
+          ? 'bg-navy-950/90 backdrop-blur-xl shadow-lg shadow-black/30'
           : 'bg-navy-950/50 backdrop-blur-md'
       }`}
+
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">

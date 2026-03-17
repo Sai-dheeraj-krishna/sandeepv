@@ -11,9 +11,9 @@ export default function AnimatedBackground() {
     const ctx = canvas.getContext('2d');
     let animationFrameId;
     let particles = [];
-    const particleCount = 100;
-    const connectionDistance = 160;
-    const mouse = { x: null, y: null, radius: 200 };
+    const particleCount = 120;
+    const connectionDistance = 180;
+    const mouse = { x: null, y: null, radius: 250 };
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -28,13 +28,17 @@ export default function AnimatedBackground() {
       reset() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 4 + 1;
+        // Significantly larger "big balls"
+        this.size = Math.random() * 8 + 2;
         this.baseX = this.x;
         this.baseY = this.y;
-        this.density = (Math.random() * 40) + 5;
-        this.vx = (Math.random() - 0.5) * 0.4;
-        this.vy = (Math.random() - 0.5) * 0.4;
-        this.color = `hsla(${200 + Math.random() * 40}, 80%, 75%, ${0.4 + Math.random() * 0.4})`;
+        this.density = (Math.random() * 50) + 10;
+        this.vx = (Math.random() - 0.5) * 0.6;
+        this.vy = (Math.random() - 0.5) * 0.6;
+        // Strict blue palette
+        const hues = [200, 210, 220, 230];
+        const hue = hues[Math.floor(Math.random() * hues.length)];
+        this.color = `hsla(${hue}, 90%, 65%, ${0.5 + Math.random() * 0.4})`;
       }
 
       update() {
@@ -57,8 +61,8 @@ export default function AnimatedBackground() {
             const directionX = dx / distance;
             const directionY = dy / distance;
             
-            // Large particles are slightly more resistant
-            const movement = (force * 3) / (this.size * 0.5);
+            // Significantly increased movement speed
+            const movement = (force * 8) / (this.size * 0.25);
             this.x += directionX * movement;
             this.y += directionY * movement;
           }
@@ -71,9 +75,9 @@ export default function AnimatedBackground() {
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
 
-        // Enhanced glow for "big" balls
-        if (this.size > 3) {
-          ctx.shadowBlur = 15;
+        // Intense glow for large particles
+        if (this.size > 4) {
+          ctx.shadowBlur = 25;
           ctx.shadowColor = this.color;
         } else {
           ctx.shadowBlur = 0;
@@ -98,8 +102,10 @@ export default function AnimatedBackground() {
 
           if (distance < connectionDistance) {
             const opacity = 1 - (distance / connectionDistance);
-            ctx.strokeStyle = `rgba(59, 130, 246, ${opacity * 0.15})`;
-            ctx.lineWidth = 0.5;
+            // More visible blue lines
+            ctx.strokeStyle = `rgba(59, 130, 246, ${opacity * 0.35})`;
+            // Thicker lines
+            ctx.lineWidth = 1.0; 
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -145,7 +151,7 @@ export default function AnimatedBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className={`fixed inset-0 -z-1 bg-[#0A0F1E] transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      className={`fixed inset-0 -z-1 bg-[#000000] transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
       style={{ touchAction: 'none' }}
     />
   );

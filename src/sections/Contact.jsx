@@ -58,7 +58,7 @@ export default function Contact() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -5, scale: 1.03 }}
-              className="flex flex-col items-center gap-3 p-6 rounded-2xl glass-strong gradient-border group hover:bg-white/[0.08] hover:glow transition-all duration-300"
+              className="flex flex-col items-center gap-3 p-6 rounded-2xl glass-strong group hover:bg-white/[0.08] hover:glow transition-all duration-300"
             >
               <div className={`p-3 rounded-xl bg-gradient-to-br ${info.gradient}`}>
                 <info.icon size={24} className="text-white" />

@@ -9,6 +9,7 @@ const skillCategories = [
     icon: Code,
     color: 'from-electric to-cyan',
     barColor: 'bg-gradient-to-r from-electric to-cyan',
+    textColor: 'text-electric-light',
     skills: [
       { name: 'C', level: 75 },
       { name: 'Python', level: 90 },
@@ -22,6 +23,7 @@ const skillCategories = [
     icon: Wrench,
     color: 'from-cyan to-purple',
     barColor: 'bg-gradient-to-r from-cyan to-purple',
+    textColor: 'text-cyan-light',
     skills: [
       { name: 'Flutter', level: 75 },
       { name: 'Firebase', level: 70 },
@@ -32,6 +34,7 @@ const skillCategories = [
     icon: Monitor,
     color: 'from-purple to-pink',
     barColor: 'bg-gradient-to-r from-purple to-pink',
+    textColor: 'text-purple-light',
     skills: [
       { name: 'Mobile App Development', level: 75 },
       { name: 'UI/UX Design', level: 70 },
@@ -42,6 +45,7 @@ const skillCategories = [
     icon: Heart,
     color: 'from-pink to-emerald',
     barColor: 'bg-gradient-to-r from-pink to-emerald',
+    textColor: 'text-pink-light',
     skills: [
       { name: 'Problem Solving', level: 90 },
       { name: 'Team Collaboration', level: 85 },
@@ -50,12 +54,12 @@ const skillCategories = [
   },
 ];
 
-function SkillBar({ name, level, barColor, delay }) {
+function SkillBar({ name, level, barColor, textColor, delay }) {
   return (
     <div className="space-y-2">
-      <div className="flex items-center justify-between text-sm glass-text">
+      <div className="flex items-center justify-between text-sm">
         <span className="text-slate-300 font-medium">{name}</span>
-        <span className="text-slate-500">{level}%</span>
+        <span className={`font-semibold ${textColor}`}>{level}%</span>
       </div>
       <div className="h-2 rounded-full bg-white/5 overflow-hidden">
         <motion.div
@@ -83,7 +87,7 @@ export default function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="glass-strong rounded-2xl p-6 md:p-8 gradient-border group hover:bg-white/[0.06] transition-all duration-300"
+            className="glass-strong rounded-2xl p-6 md:p-8 group hover:bg-white/[0.06] transition-all duration-300"
           >
             {/* Header */}
             <div className="flex items-center gap-3 mb-6">
@@ -101,6 +105,7 @@ export default function Skills() {
                   name={skill.name}
                   level={skill.level}
                   barColor={cat.barColor}
+                  textColor={cat.textColor}
                   delay={0.2 + j * 0.1}
                 />
               ))}

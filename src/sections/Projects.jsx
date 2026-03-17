@@ -70,7 +70,7 @@ export default function Projects() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.15 }}
             whileHover={{ y: -8, rotateX: 2, rotateY: -2 }}
-            className="group glass-strong rounded-2xl overflow-hidden gradient-border"
+            className="group glass-strong rounded-2xl overflow-hidden"
             style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
           >
             {/* Header gradient */}

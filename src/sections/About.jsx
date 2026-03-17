@@ -20,7 +20,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="glass-strong rounded-2xl p-8 md:p-12 gradient-border"
+          className="glass-strong rounded-2xl p-8 md:p-12"
         >
           <div className="flex items-start gap-4 mb-6">
             <div className="p-3 rounded-xl glass text-electric-light shrink-0">

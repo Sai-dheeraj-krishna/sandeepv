@@ -45,7 +45,7 @@ export default function Certifications() {
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: i * 0.1 }}
             whileHover={{ y: -5, scale: 1.02 }}
-            className="glass-strong rounded-2xl overflow-hidden gradient-border group cursor-pointer"
+            className="glass-strong rounded-2xl overflow-hidden group cursor-pointer"
           >
             {/* Top bar */}
             <div className={`h-1 bg-gradient-to-r ${cert.color}`} />

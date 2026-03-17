@@ -44,7 +44,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="glass-strong rounded-3xl p-8 md:p-14 gradient-border"
+          className="glass-strong rounded-3xl p-8 md:p-14"
         >
           {/* Name Badge */}
           <motion.div

@@ -51,7 +51,7 @@ export default function Education() {
               </div>
 
               {/* Card */}
-              <div className="glass-strong rounded-2xl p-6 md:p-8 gradient-border group hover:bg-white/[0.08] transition-all duration-300">
+              <div className="glass-strong rounded-2xl p-6 md:p-8 group hover:bg-white/[0.08] transition-all duration-300">
                 <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
                   <div className="flex items-center gap-3">
                     <div className={`p-2 rounded-lg glass-tag ${edu.iconColor}`}>

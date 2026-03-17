@@ -1,73 +1,76 @@
 import { motion } from 'framer-motion';
 import SectionWrapper from '../components/SectionWrapper';
 import SectionHeading from '../components/SectionHeading';
-import { Code, Wrench, Monitor, Heart } from 'lucide-react';
+import { Code, Wrench, Monitor } from 'lucide-react';
 
 const skillCategories = [
   {
-    title: 'Programming',
+    title: 'Programming Languages',
     icon: Code,
     color: 'from-electric to-cyan',
-    barColor: 'bg-gradient-to-r from-electric to-cyan',
+    barColor: 'from-electric to-cyan',
     textColor: 'text-electric-light',
+    borderColor: 'border-electric/20',
+    accentBg: 'bg-electric/10',
     skills: [
-      { name: 'C', level: 75 },
-      { name: 'Python', level: 90 },
-      { name: 'Java', level: 80 },
-      { name: 'HTML', level: 85 },
-      { name: 'CSS', level: 80 },
+      { name: 'Python',  level: 90, emoji: '🐍' },
+      { name: 'Java',    level: 80, emoji: '☕' },
+      { name: 'C',       level: 75, emoji: '⚡' },
+      { name: 'HTML',    level: 85, emoji: '🌐' },
+      { name: 'CSS',     level: 80, emoji: '🎨' },
     ],
   },
   {
     title: 'Frameworks & Tools',
     icon: Wrench,
-    color: 'from-cyan to-purple',
-    barColor: 'bg-gradient-to-r from-cyan to-purple',
+    color: 'from-cyan to-violet',
+    barColor: 'from-cyan to-violet',
     textColor: 'text-cyan-light',
+    borderColor: 'border-cyan/20',
+    accentBg: 'bg-cyan/10',
     skills: [
-      { name: 'Flutter', level: 75 },
-      { name: 'Firebase', level: 70 },
+      { name: 'Scikit-learn',              level: 82, emoji: '🤖' },
+      { name: 'Streamlit',                 level: 80, emoji: '📊' },
+      { name: 'HuggingFace Transformers',  level: 75, emoji: '🦜' },
+      { name: 'Flutter',                   level: 78, emoji: '📱' },
+      { name: 'Firebase',                  level: 72, emoji: '🔥' },
     ],
   },
   {
-    title: 'Development',
+    title: 'Technical Areas',
     icon: Monitor,
-    color: 'from-purple to-pink',
-    barColor: 'bg-gradient-to-r from-purple to-pink',
-    textColor: 'text-purple-light',
+    color: 'from-violet to-pink',
+    barColor: 'from-violet to-pink',
+    textColor: 'text-violet-light',
+    borderColor: 'border-violet/20',
+    accentBg: 'bg-violet/10',
     skills: [
-      { name: 'Mobile App Development', level: 75 },
-      { name: 'UI/UX Design', level: 70 },
-    ],
-  },
-  {
-    title: 'Soft Skills',
-    icon: Heart,
-    color: 'from-pink to-emerald',
-    barColor: 'bg-gradient-to-r from-pink to-emerald',
-    textColor: 'text-pink-light',
-    skills: [
-      { name: 'Problem Solving', level: 90 },
-      { name: 'Team Collaboration', level: 85 },
-      { name: 'Continuous Learning', level: 95 },
+      { name: 'Machine Learning',      level: 85, emoji: '🧠' },
+      { name: 'NLP',                   level: 78, emoji: '🗣️' },
+      { name: 'Mobile App Dev',        level: 78, emoji: '📲' },
+      { name: 'Data Analysis',         level: 80, emoji: '📈' },
+      { name: 'UI/UX Design',          level: 70, emoji: '✨' },
     ],
   },
 ];
 
-function SkillBar({ name, level, barColor, textColor, delay }) {
+function SkillBar({ name, emoji, level, barColor, textColor, delay }) {
   return (
-    <div className="space-y-2">
+    <div className="space-y-1.5">
       <div className="flex items-center justify-between text-sm">
-        <span className="text-slate-300 font-medium">{name}</span>
-        <span className={`font-semibold ${textColor}`}>{level}%</span>
+        <div className="flex items-center gap-2">
+          <span className="text-base leading-none">{emoji}</span>
+          <span className="text-slate-300 font-medium">{name}</span>
+        </div>
+        <span className={`text-xs font-bold ${textColor} tabular-nums`}>{level}%</span>
       </div>
-      <div className="h-2 rounded-full bg-white/5 overflow-hidden">
+      <div className="h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: `${level}%` }}
           viewport={{ once: true }}
-          transition={{ duration: 1, delay, ease: 'easeOut' }}
-          className={`h-full rounded-full ${barColor}`}
+          transition={{ duration: 1.1, delay, ease: [0.34, 1.56, 0.64, 1] }}
+          className={`h-full rounded-full bg-gradient-to-r ${barColor}`}
         />
       </div>
     </div>
@@ -77,9 +80,13 @@ function SkillBar({ name, level, barColor, textColor, delay }) {
 export default function Skills() {
   return (
     <SectionWrapper id="skills">
-      <SectionHeading title="Skills" subtitle="Technologies and competencies" />
+      <SectionHeading
+        tag="What I Know"
+        title="Skills & Expertise"
+        subtitle="Technologies, frameworks, and areas that I work with."
+      />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {skillCategories.map((cat, i) => (
           <motion.div
             key={i}
@@ -87,14 +94,15 @@ export default function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="glass-strong rounded-2xl p-6 md:p-8 group hover:bg-white/[0.06] transition-all duration-300"
+            whileHover={{ y: -4 }}
+            className={`glass-strong rounded-2xl p-6 md:p-8 border ${cat.borderColor} transition-all duration-300 hover:shadow-xl`}
           >
             {/* Header */}
             <div className="flex items-center gap-3 mb-6">
-              <div className={`p-2.5 rounded-xl bg-gradient-to-br ${cat.color} bg-opacity-10`}>
-                <cat.icon size={22} className="text-white" />
+              <div className={`p-2.5 rounded-xl ${cat.accentBg} border ${cat.borderColor}`}>
+                <cat.icon size={22} className={cat.textColor} />
               </div>
-              <h3 className="text-lg font-bold text-white">{cat.title}</h3>
+              <h3 className="text-base font-bold text-white">{cat.title}</h3>
             </div>
 
             {/* Skill bars */}
@@ -103,16 +111,30 @@ export default function Skills() {
                 <SkillBar
                   key={j}
                   name={skill.name}
+                  emoji={skill.emoji}
                   level={skill.level}
                   barColor={cat.barColor}
                   textColor={cat.textColor}
-                  delay={0.2 + j * 0.1}
+                  delay={0.15 + j * 0.08}
                 />
               ))}
             </div>
           </motion.div>
         ))}
       </div>
+
+      {/* Floating tech badge strip */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.4, duration: 0.6 }}
+        className="mt-10 flex flex-wrap justify-center gap-3"
+      >
+        {['Python', 'Java', 'C', 'Flutter', 'Firebase', 'Scikit-learn', 'Streamlit', 'HuggingFace', 'Pandas', 'NLP', 'HTML', 'CSS', 'Tkinter'].map((tech) => (
+          <span key={tech} className="badge">{tech}</span>
+        ))}
+      </motion.div>
     </SectionWrapper>
   );
 }

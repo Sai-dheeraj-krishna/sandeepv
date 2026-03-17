@@ -19,7 +19,7 @@ function SectionFallback() {
 
 export default function App() {
   return (
-    <div className="relative min-h-screen text-slate-200 overflow-x-hidden">
+    <div className="relative min-h-screen text-slate-200">
       <AnimatedBackground />
       <Navbar />
       <main>

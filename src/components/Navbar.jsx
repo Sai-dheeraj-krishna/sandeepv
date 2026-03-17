@@ -108,9 +108,13 @@ export default function Navbar() {
 
           {/* Mobile Toggle */}
           <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 text-slate-300 hover:text-white transition cursor-pointer"
+            onClick={(e) => {
+              e.stopPropagation();
+              setMobileOpen(!mobileOpen);
+            }}
+            className="lg:hidden relative z-[60] p-2 text-slate-300 hover:text-white transition cursor-pointer touch-none pointer-events-auto"
             aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -125,7 +129,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="lg:hidden glass border-t border-white/[0.06]"
+            className="lg:hidden absolute top-full left-0 right-0 bg-navy-900/95 backdrop-blur-xl border-t border-white/[0.06] shadow-2xl z-50 overflow-hidden"
           >
             <div className="px-4 py-4 space-y-1">
               {navLinks.map((link, i) => (

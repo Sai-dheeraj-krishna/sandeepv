@@ -126,28 +126,7 @@ export default function Projects() {
                 ))}
               </div>
 
-              {/* Buttons */}
-              <div className="flex gap-2 pt-2 border-t border-white/[0.06]">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl glass text-slate-400 text-xs font-semibold hover:text-white hover:bg-white/[0.1] transition-all duration-200"
-                >
-                  <Github size={14} />
-                  GitHub
-                </a>
-                <a
-                  href={project.demo}
-                  className="flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-white text-xs font-semibold transition-all duration-200 hover:opacity-90 hover:shadow-lg"
-                  style={{ background: `linear-gradient(135deg, var(--${project.gradient.split('-')[1] === 'to' ? '' : ''}))` }}
-                >
-                  <span className={`flex items-center justify-center gap-1.5 w-full h-full bg-gradient-to-r ${project.gradient} rounded-xl py-0 px-0`}>
-                    <ExternalLink size={14} />
-                    Live Demo
-                  </span>
-                </a>
-              </div>
+
             </div>
           </motion.div>
         ))}

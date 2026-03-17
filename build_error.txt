@@ -1,0 +1,14 @@
+﻿
+> sandeepv@0.0.0 build
+> vite build
+
+[36mvite v8.0.0 [32mbuilding client environment for production...[36m[39m
+[2K
+transforming...Ô£ô 2140 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   1.32 kB Ôöé gzip:   0.64 kB
+dist/assets/index-CDqHmUvG.css   33.03 kB Ôöé gzip:   6.26 kB
+dist/assets/index-lX5h-nuD.js   344.01 kB Ôöé gzip: 108.72 kB
+
+[32mÔ£ô built in 1.76s[39m

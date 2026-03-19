@@ -3,19 +3,19 @@ import { Github, Mail, Phone, Download, Heart } from 'lucide-react';
 
 const socials = [
   { icon: Github, href: 'https://github.com/sandeepvangara', label: 'GitHub' },
-  { icon: Mail,   href: 'mailto:sandeepvangara.2005@gmail.com', label: 'Email' },
-  { icon: Phone,  href: 'tel:+919392855422', label: 'Phone' },
+  { icon: Mail, href: 'mailto:sandeepvangara.2005@gmail.com', label: 'Email' },
+  { icon: Phone, href: 'tel:+919392855422', label: 'Phone' },
 ];
 
 const navLinks = [
-  { id: 'home',           label: 'Home' },
-  { id: 'about',          label: 'About' },
-  { id: 'education',      label: 'Education' },
-  { id: 'skills',         label: 'Skills' },
-  { id: 'projects',       label: 'Projects' },
+  { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'education', label: 'Education' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'projects', label: 'Projects' },
   { id: 'certifications', label: 'Certifications' },
-  { id: 'achievements',   label: 'Achievements' },
-  { id: 'contact',        label: 'Contact' },
+  { id: 'achievements', label: 'Achievements' },
+  { id: 'contact', label: 'Contact' },
 ];
 
 export default function Footer() {
@@ -88,7 +88,7 @@ export default function Footer() {
               </a>
             ))}
             <a
-              href="#"
+              href="sandeep_resume.pdf" download="sandeep_resume.pdf"
               className="flex items-center gap-2 px-4 py-2 rounded-full btn-primary !py-2 !px-4 !text-xs !rounded-full ml-2"
             >
               <Download size={12} />

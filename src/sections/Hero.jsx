@@ -51,10 +51,10 @@ function CodeWindow() {
               {line.text.startsWith('skills') && (
                 <><span className="text-electric-light">skills</span><span className="text-slate-400"> = [</span></>
               )}
-              {(line.text.includes('"Python"') ) && (
+              {(line.text.includes('"Python"')) && (
                 <span className="text-yellow-300/90">"Python", "ML",</span>
               )}
-              {(line.text.includes('"Flutter"') ) && (
+              {(line.text.includes('"Flutter"')) && (
                 <span className="text-yellow-300/90">"Flutter", "NLP"</span>
               )}
               {line.text === ']' && <span className="text-slate-400">]</span>}
@@ -176,7 +176,7 @@ export default function Hero() {
               </button>
 
               <a
-                href="#"
+                href="sandeep_resume.pdf" download="sandeep_resume.pdf"
                 className="btn-ghost gradient-border"
               >
                 <Download size={17} />

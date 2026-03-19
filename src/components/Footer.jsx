@@ -69,7 +69,7 @@ export default function Footer() {
               © 2026 Vangara Venkata Sandeep. All rights reserved.
             </p>
             <p className="text-xs text-slate-600 mt-1 flex items-center justify-center sm:justify-start gap-1">
-              Built with <Heart size={10} className="text-pink-light" /> using React, TailwindCSS & Framer Motion
+              Built with <Heart size={10} className="text-pink-light" />
             </p>
           </div>
 
